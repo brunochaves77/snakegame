@@ -24,6 +24,9 @@ function criarCobrinha(){
     }
 }
 
+criarBG();
+criarCobrinha();
+
 function drawFood(){
     context.fillStyle = "red";
     context.fillRect(food.x, food.y, box, box);
@@ -51,9 +54,11 @@ function iniciarJogo(){
         }
     }
 
+    
     criarBG();
     criarCobrinha();
     drawFood();
+    
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -74,8 +79,13 @@ function iniciarJogo(){
         x: snakeX,
         y: snakeY
     }
-
+    
     snake.unshift(newHead);
 }
 
-let jogo = setInterval(iniciarJogo, 100);
+//let jogo = setInterval(iniciarJogo, 100); 
+
+document.getElementById("teste").addEventListener("click", function clicou(){
+    jogo = setInterval(iniciarJogo, 100)
+    this.disabled = true;
+});
