@@ -8,19 +8,46 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
     <title>Snake Game</title>
 </head>
 <body>
+    <!--GAME SETTINGS-->
     <div class="container">
-        <div class="gamer">
+        <div class="gamesettings">
             <h1 class="title">Snake Game</h1>
-            <p>Score</p>
-            <p>Dificuldade</p>
-            <p>Skin</p>        
-            <button id="teste" class="start">start</button>
+            <div class="gamedata">
+                <p>SCORE</p> 
+                <p class="aligndata scorevalue" id="scorevalue">0</p>
+            </div>
+
+
+            <!-- 
+            ---TO BE CONFIG ---
+
+            <div class="gamedata">
+                <p>Dificuldade</p>
+                <p class="aligndata" id="scorevalue">1</p>
+                <button></button>
+            </div>
+            <div class="gamedata">
+                <p>Skin</p>   
+                <input type="color" class="aligndata">
+            </div>
+            -->
+
+
+            <button id="start" class="start">start</button>
         </div>
-        <div class="canvas">
+
+        <!--GAME-->
+        <div class="game">
             <canvas id="snake" width="512" height="512"></canvas>
+            <div class="gameover" id="gameover" style="display:none">
+                <button class="start restart" onclick="restart()">Restart</button>
+            </div>
         </div>
         
     </div>

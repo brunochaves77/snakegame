@@ -1,5 +1,8 @@
+//Canvas variables
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
+
+//Game variables
 let box = 32;
 let snake = [];
 snake[0] = {
@@ -12,6 +15,18 @@ let food = {
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 
+//Page variables
+let botao = document.getElementById("start");
+let score = 0;
+let level = 1;
+let snakeskin = "blue";
+
+let scoreValue = document.getElementById('scorevalue');
+
+let gameover = document.getElementById('gameover');
+
+
+//Functions
 function criarBG(){
     context.fillStyle = "lightgreen";
     context.fillRect(0, 0, 16 * box, 16 * box);
@@ -19,7 +34,7 @@ function criarBG(){
 
 function criarCobrinha(){
     for(i=0; i < snake.length; i++){
-        context.fillStyle = "green";
+        context.fillStyle = snakeskin;
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 }
@@ -42,15 +57,16 @@ function update (event){
 }
 
 function iniciarJogo(){
-    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 * box && direction == "left") snake[0].x = 16 * box;
-    if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 * box && direction == "up") snake[0].y = 16 * box;
-
+    if(snake[0].x > 15 * box && direction !== "left") snake[0].x = 0;
+    if(snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
+    if(snake[0].y > 15 * box && direction != "up") snake[0].y = 0;
+    if(snake[0].y < 0 && direction != "down") snake[0].y = 15 * box;
+    
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            alert("Game Over :(");
+            gameOver();
+            botao.disabled = false;   
         }
     }
 
@@ -72,7 +88,12 @@ function iniciarJogo(){
         snake.pop();
     }
     else {food.x = Math.floor(Math.random() * 15 + 1) * box;
-        food.y = Math.floor(Math.random() * 15 + 1) * box;  
+          food.y = Math.floor(Math.random() * 15 + 1) * box;  
+
+          score += 50;
+          scoreValue.innerHTML = score;
+
+          console.log(scoreValue.defaulValue);
     }
 
     let newHead = {
@@ -83,9 +104,20 @@ function iniciarJogo(){
     snake.unshift(newHead);
 }
 
-//let jogo = setInterval(iniciarJogo, 100); 
 
-document.getElementById("teste").addEventListener("click", function clicou(){
+
+// Game start and restart
+botao.addEventListener("click", function clicou(){
     jogo = setInterval(iniciarJogo, 100)
-    this.disabled = true;
+    this.style.display = "none";
 });
+
+function restart() {
+    window.location.reload();
+}
+
+function gameOver() {
+    clearInterval(jogo);
+    gameover.style.display = "flex";
+}
+

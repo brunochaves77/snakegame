@@ -1,26 +1,107 @@
 body {
-    margin: 0;
-    padding: 0;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;   
+    align-items: center;
+    height: 98vh;
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
 }
 
+/* GAME SETTINGS */
 .container {
+    background-color: white;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+
+    color: #DDD6F3;
+
+    justify-content: center;   
+    align-items: stretch;
+
+    padding: 30px;
+    border-radius: 20px; 
+    margin-bottom: 5rem;
+
+    box-shadow: inset 4px 4px 8px rgba(70, 70, 70, .5),
+    inset -4px -4px 8px rgba(0, 0, 0, .5),
+    0px 0px 47px -7px rgba(0,0,0,0.75);
 }
 
-.gamer .title {
-    color: green;
+.gamesettings button {
+    margin-top: 20rem;
+    margin-left: 3rem;
+    width: 10rem;
+}
+
+.title {
+    color: #fff;
+    
     text-transform: uppercase;
+    text-align: center;
+    margin-right: 3rem;
+
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 }
 
-.gamer .start {
+.gamedata {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.aligndata{
+    width: 3rem;
+    margin-left: auto;
+    margin-right: 3rem;
+    text-align: center;
+}
+
+.scorevalue{
+    border: 5px solid #2AA402;
+    border-radius: 0px 20px 0px 20px;   
+    padding: 0 2rem;
+    background-color: rgba(255, 255, 0, 0.061);
+}
+
+.start {
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+
+    background: #0d6efd;
+    color: #fff;
+
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    padding: .8rem 2rem;
+    
+    margin-left: 2.5rem;
+
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-shadow: 0px 0px 47px -7px rgba(0,0,0,0.75);
 }
 
+.start:hover {
+    background: #0f4ead;
+}
+
+.gameover {
+    margin-left: auto;
+}
+
+.restart {
+    width: 512px;
+    margin-left: 0;
+    margin-top: 1rem;
+}
+
+
+/* GAME */
 .canvas {
     height: 95vh;
-    width: 95;
+    width: 95vh;
     justify-content: center;
     align-items: flex-start;
 
