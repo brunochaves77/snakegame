@@ -50,7 +50,7 @@ The application:
 
 ## How it works
 
-This project is uses the basic frontend:
+This project uses the basic frontend:
 1. Javascript 
 2. HTML 
 3. CSS (for style the page and the game)
